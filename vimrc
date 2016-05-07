@@ -56,6 +56,11 @@ inoremap jj <esc>
 inoremap kk <esc>
 noremap ; :
 
+
+" Nerdtree
+let NERDTreeHijackNetrw=1
+
+
 " :bk -> buffer kill, delete this buffer and replace 
 "                     the window contents with that 
 "                     of the previous buffer 
@@ -74,4 +79,5 @@ inoremap <C-w><C-w> <esc><C-w><C-w>
 " resource vimrc
 nnoremap <leader>s :source<Space>$MYVIMRC<cr>
 nnoremap <leader>e :ls<cr>:edit<Space>#
+nnoremap <leader>o :e .<CR>
 
