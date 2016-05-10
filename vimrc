@@ -37,6 +37,7 @@ set autoindent
 set expandtab
 set smarttab
 
+set mouse=a
 
 " Folds
 set foldmethod=syntax
