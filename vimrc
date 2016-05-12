@@ -11,7 +11,7 @@ filetype plugin indent on
 " Global config
 let mapleader = "-"
 set shell=/bin/zsh\ -l
-
+set tags=tags;/
 
 set background=dark
 
@@ -23,9 +23,9 @@ set laststatus=2
 set ruler
 set rulerformat=%-14.(%l,%c%V%)\ %P
 " Active colors
-hi StatusLine   ctermfg=237 ctermbg=205 cterm=bold 
+hi StatusLine   ctermfg=lightcyan ctermbg=darkgrey cterm=bold 
 " Inactive colors
-hi StatusLineNC ctermfg=237 ctermbg=15 cterm=bold
+hi StatusLineNC ctermfg=grey ctermbg=darkgrey cterm=bold
 
 " Quality of life
 set nowrap
@@ -37,10 +37,11 @@ set autoindent
 set expandtab
 set smarttab
 
+set mouse=n
 
 " Folds
 set foldmethod=syntax
-set foldlevelstart=1
+set foldlevel=99
 
 " Allow for unwritten changes in hidden buffers
 set hidden
@@ -81,4 +82,6 @@ nnoremap <leader>s :source<Space>$MYVIMRC<cr>
 nnoremap <leader>e :ls<cr>:edit<Space>#
 nnoremap <leader>o :e .<CR>
 nnoremap <leader>a :A<CR>
+nnoremap <leader><leader> :edit<Space>#<cr>
+nnoremap <leader>f :edit<Space>.<cr>
 
