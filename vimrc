@@ -37,7 +37,6 @@ set autoindent
 set expandtab
 set smarttab
 
-set mouse=a
 
 " Folds
 set foldmethod=syntax
@@ -81,4 +80,5 @@ inoremap <C-w><C-w> <esc><C-w><C-w>
 nnoremap <leader>s :source<Space>$MYVIMRC<cr>
 nnoremap <leader>e :ls<cr>:edit<Space>#
 nnoremap <leader>o :e .<CR>
+nnoremap <leader>a :A<CR>
 
