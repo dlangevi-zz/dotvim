@@ -2,8 +2,6 @@ if filereadable("../.vimrc.local")
   source ~/.vimrc.local
 endif
 
-
-
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -31,13 +29,18 @@ hi StatusLineNC ctermfg=grey ctermbg=darkgrey cterm=bold
 set nowrap
 set backspace=indent,eol,start
 
+set wildmode=longest,list,full
+set wildmenu
 
+set textwidth=80
 set tabpagemax=80
 set autoindent
 set expandtab
 set smarttab
 
-set mouse=n
+
+set noswapfile
+set mouse=
 
 " Folds
 set foldmethod=syntax
@@ -47,9 +50,9 @@ set foldlevel=99
 set hidden
 
 " Currently commentted out for work
-"set softtabstop=softtabstop3
-"set tabstop=3
-"set shiftwidth=3
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
 
 inoremap jk <esc>
 inoremap kj <esc>
@@ -74,6 +77,9 @@ if !exists(':Son')
   command Soff set nospell
 endif
 
+
+autocmd FileType python setlocal foldmethod=indent
+
 " allow ctrl-w to act normaly in insert mode, 
 inoremap <C-w><C-w> <esc><C-w><C-w>
 
@@ -84,4 +90,5 @@ nnoremap <leader>o :e .<CR>
 nnoremap <leader>a :A<CR>
 nnoremap <leader><leader> :edit<Space>#<cr>
 nnoremap <leader>f :edit<Space>.<cr>
+nnoremap <leader>\\ <C-\>
 
