@@ -21,6 +21,9 @@ set laststatus=2
 set ruler
 set rulerformat=%-14.(%l,%c%V%)\ %P
 " Active colors
+"hi StatusLine   ctermfg=lightcyan ctermbg=white cterm=bold 
+" Inactive colors
+"hi StatusLineNC ctermfg=grey ctermbg=white cterm=bold
 hi StatusLine   ctermfg=lightcyan ctermbg=darkgrey cterm=bold 
 " Inactive colors
 hi StatusLineNC ctermfg=grey ctermbg=darkgrey cterm=bold
@@ -85,7 +88,8 @@ inoremap <C-w><C-w> <esc><C-w><C-w>
 
 " resource vimrc
 nnoremap <leader>s :source<Space>$MYVIMRC<cr>
-nnoremap <leader>e :ls<cr>:edit<Space>#
+"nnoremap <leader>e :ls<cr>:edit<Space>#
+nnoremap <leader>e :CommandTBuffer<cr>
 nnoremap <leader>o :e .<CR>
 nnoremap <leader>a :A<CR>
 nnoremap <leader><leader> :edit<Space>#<cr>
