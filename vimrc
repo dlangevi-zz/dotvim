@@ -1,10 +1,46 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+syntax on
+
 if filereadable("../.vimrc.local")
   source ~/.vimrc.local
 endif
 
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
+source $LOCAL_ADMIN_SCRIPTS/master.vimrc
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'wincent/command-t'
+Plugin 'christoomey/vim-tmux-navigator'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this linek
+
 
 " Global config
 let mapleader = "-"
@@ -21,9 +57,6 @@ set laststatus=2
 set ruler
 set rulerformat=%-14.(%l,%c%V%)\ %P
 " Active colors
-"hi StatusLine   ctermfg=lightcyan ctermbg=white cterm=bold 
-" Inactive colors
-"hi StatusLineNC ctermfg=grey ctermbg=white cterm=bold
 hi StatusLine   ctermfg=lightcyan ctermbg=darkgrey cterm=bold 
 " Inactive colors
 hi StatusLineNC ctermfg=grey ctermbg=darkgrey cterm=bold
@@ -41,7 +74,6 @@ set autoindent
 set expandtab
 set smarttab
 
-
 set noswapfile
 set mouse=
 
@@ -53,9 +85,9 @@ set foldlevel=99
 set hidden
 
 " Currently commentted out for work
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2
+"set softtabstop=softtabstop3
+"set tabstop=3
+"set shiftwidth=3
 
 inoremap jk <esc>
 inoremap kj <esc>
@@ -80,19 +112,14 @@ if !exists(':Son')
   command Soff set nospell
 endif
 
-
-autocmd FileType python setlocal foldmethod=indent
-
 " allow ctrl-w to act normaly in insert mode, 
 inoremap <C-w><C-w> <esc><C-w><C-w>
 
 " resource vimrc
 nnoremap <leader>s :source<Space>$MYVIMRC<cr>
-"nnoremap <leader>e :ls<cr>:edit<Space>#
 nnoremap <leader>e :CommandTBuffer<cr>
 nnoremap <leader>o :e .<CR>
 nnoremap <leader>a :A<CR>
 nnoremap <leader><leader> :edit<Space>#<cr>
 nnoremap <leader>f :edit<Space>.<cr>
-nnoremap <leader>\\ <C-\>
 
