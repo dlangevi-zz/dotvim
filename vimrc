@@ -6,8 +6,6 @@ if filereadable("../.vimrc.local")
   source ~/.vimrc.local
 endif
 
-source $LOCAL_ADMIN_SCRIPTS/master.vimrc
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
