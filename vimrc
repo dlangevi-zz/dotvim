@@ -2,10 +2,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 syntax on
 
-if filereadable("../.vimrc.local")
-  source ~/.vimrc.local
-endif
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -19,14 +15,22 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wincent/command-t'
 Plugin 'christoomey/vim-tmux-navigator'
-
+Plugin 'henrik/vim-indexed-search'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
+
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -43,7 +47,6 @@ filetype plugin indent on    " required
 " Global config
 let mapleader = "-"
 set shell=/bin/zsh\ -l
-set tags=tags;/
 
 set background=dark
 
@@ -77,25 +80,29 @@ set mouse=
 
 " Folds
 set foldmethod=syntax
-set foldlevel=99
+set foldlevel=0
 
 " Allow for unwritten changes in hidden buffers
 set hidden
 
-" Currently commentted out for work
-"set softtabstop=softtabstop3
-"set tabstop=3
-"set shiftwidth=3
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
 
 inoremap jk <esc>
-inoremap kj <esc>
+" inoremap kj <esc> someone has this in their username :'(
 inoremap jj <esc>
 inoremap kk <esc>
 noremap ; :
 
+let g:cpp_class_scope_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_template_highlight = 1
 
 " Nerdtree
 let NERDTreeHijackNetrw=1
+
+map <C-n> :NERDTreeToggle<CR>
 
 
 " :bk -> buffer kill, delete this buffer and replace 
