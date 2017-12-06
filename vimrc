@@ -1,48 +1,22 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'scrooloose/nerdtree'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'henrik/vim-indexed-search'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/indentLine'
+call plug#end()
+
+set nocompatible " be iMproved
 syntax on
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'scrooloose/nerdtree'
-Plugin 'wincent/command-t'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'henrik/vim-indexed-search'
-Plugin 'Valloric/YouCompleteMe'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this linek
-
 
 " Global config
 let mapleader = "-"
@@ -80,7 +54,7 @@ set mouse=
 
 " Folds
 set foldmethod=syntax
-set foldlevel=0
+set foldlevel=3
 
 " Allow for unwritten changes in hidden buffers
 set hidden
@@ -122,9 +96,16 @@ inoremap <C-w><C-w> <esc><C-w><C-w>
 
 " resource vimrc
 nnoremap <leader>s :source<Space>$MYVIMRC<cr>
-nnoremap <leader>e :CommandTBuffer<cr>
+nnoremap <leader>t :Files<cr>
+nnoremap <leader>e :Buffers<cr>
 nnoremap <leader>o :e .<CR>
 nnoremap <leader>a :A<CR>
 nnoremap <leader><leader> :edit<Space>#<cr>
 nnoremap <leader>f :edit<Space>.<cr>
 
+" YCM must use the same Python version it's linked against
+let g:ycm_path_to_python_interpreter = '/data/users/dlangevi/fbsource/fbcode/third-party-buck/gcc-5-glibc-2.23/build/python/2.7/bin/python2.7'
+" Default ycm_extra_conf.py for fbcode
+let g:ycm_global_ycm_extra_conf = '/home/dlangevi/.vim/bundle/YouCompleteMe/ycm_extra_conf_fbcode.py'
+
+autocmd BufRead,BufNew *.sh setlocal textwidth=0
